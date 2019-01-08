@@ -2,13 +2,31 @@
   "version": "0.0.1",
   "name": "icon-pipeline",
   "description": "No nonsense icon build pipeline",
+  "keywords": [
+    "icons",
+    "svg",
+    "optimization",
+    "sprite"
+  ],
   "main": "lib/index.js",
+  "files": [
+    "lib",
+    "package.json",
+    "package-lock.json",
+    "README.md"
+  ],
   "scripts": {
-    "preversion": "npm run build",
-    "release:patch": "npm version patch",
-    "release:minor": "npm version minor",
-    "release:major": "npm version major",
-    "postversion": "git push origin && git push origin --tags && npm run dist"
+    "publish": "git push origin && git push origin --tags",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish"
+  },
+  "author": "David Wells",
+  "license": "MIT",
+  "homepage": "https://github.com/DavidWells/icon-pipeline#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DavidWells/icon-pipeline"
   },
   "dependencies": {
     "brotli-size": "0.0.3",
