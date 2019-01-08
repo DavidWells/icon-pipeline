@@ -11,10 +11,14 @@
     "postversion": "git push origin && git push origin --tags && npm run dist"
   },
   "dependencies": {
+    "brotli-size": "0.0.3",
+    "chalk": "^2.4.2",
     "fs-extra": "^0.30.0",
+    "gzip-size": "^5.0.0",
     "htmlparser2": "^3.9.1",
-    "jade": "^1.11.0",
     "lodash.filter": "^4.6.0",
+    "pretty-bytes": "^5.1.0",
+    "pug": "^2.0.3",
     "rimraf": "^2.6.3",
     "svgo": "^0.7.0"
   }
