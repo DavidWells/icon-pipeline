@@ -1,0 +1,16 @@
+.wrapper {
+  display: inline-block;
+  fill: inherit;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  max-height: 100px;
+  max-width: 100px;
+}
+.icon {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  max-height: 100px;
+  max-width: 100px;
+}

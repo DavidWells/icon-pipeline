@@ -1,0 +1,28 @@
+{
+  "name": "example",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-scripts": "2.1.3"
+  },
+  "scripts": {
+    "prestart": "npm run icons",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "postbuild": "npm run icons",
+    "test": "react-scripts test",
+    "icons": "node ./make-icons.js"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
