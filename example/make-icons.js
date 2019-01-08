@@ -16,7 +16,7 @@ iconPipeline({
 	/* Namespace of icon IDs. Will prefix icon names. Example 'foo.svg' will become 'company-foo' */
 	// namespace: 'company'
 }).then((data) => {
-	console.log('Finished processing Icons', data)
+	console.log(data)
 }).catch((e) => {
 	console.log(e)
 })
