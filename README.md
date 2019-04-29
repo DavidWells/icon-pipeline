@@ -19,7 +19,6 @@ Include `icon-pipeline` as a dev dependency and call it during your build proces
 Here is an example:
 
 ```js
-// icon-tools.js
 const path = require('path')
 const iconPipeline = require('icon-pipeline')
 
@@ -47,6 +46,8 @@ console.log(iconData)
 
 See [`make-icons.js` file](/example) for a working example of this.
 
+### Input
+
 So for example, the src directory (**srcDir**) of unoptimized SVG icons looks like:
 
 ```
@@ -55,6 +56,8 @@ src/icons/
 ├── github.svg
 └── facebook.svg
 ```
+
+### Output 
 
 The output directory (**outputDir**) of icons will result in:
 
