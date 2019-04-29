@@ -14,30 +14,58 @@ npm install icon-pipeline
 
 ## Usage
 
-See [example](/example) `make-icons.js` file
+Include `icon-pipeline` as a dev dependency and call it during your build process.
+
+Here is an example:
 
 ```js
 // icon-tools.js
 const path = require('path')
 const iconPipeline = require('icon-pipeline')
 
-const iconFolder = path.join(__dirname, 'src', 'icons')
-const buildFolder = path.join(__dirname, 'build', 'icons')
+const iconSrcFolder = path.join(__dirname, 'src', 'icons')
+const iconOutputFolder = path.join(__dirname, 'build', 'icons')
 
-const iconData = iconPipeline({
-  /* Location of non optimized svg icons */
-  srcDir: iconFolder,
-  /* Output directory for optimized svg icons & svg sprite */
-  outputDir: buildFolder,
-  /* Includes the sprite.js && sprite.svg in original icon directory */
+/* Generate optimized SVGs and icon sprite */
+iconPipeline({
+  // Location of non optimized svg icons
+  srcDir: iconSrcFolder,
+  // Output directory for optimized svg icons & svg sprite
+  outputDir: iconOutputFolder,
+  // Includes the sprite.js && sprite.svg in original icon directory
   includeSpriteInSrc: true,
-  /* Turn off additional svg classes added for advanced styling */
-  // disableClasses: true,
-  /* Namespace of icon IDs. Will prefix icon names. Example 'foo.svg' will become 'company-foo' */
-  // namespace: 'company'
+  // Turn off additional svg classes added for advanced styling
+  /* disableClasses: true, */
+  // Namespace of icon IDs. Will prefix icon names. Example 'foo.svg' will become 'company-foo'
+  /* namespace: 'company' */
+}).then((iconData) => {
+  console.log('iconData', iconData)
 })
 
 console.log(iconData)
+```
+
+See [`make-icons.js` file](/example) for a working example of this.
+
+So for example, the src directory (**srcDir**) of unoptimized SVG icons looks like:
+
+```
+src/icons/
+├── profile.svg
+├── github.svg
+└── facebook.svg
+```
+
+The output directory (**outputDir**) of icons will result in:
+
+```
+build/icons/
+├── sprite.svg     <-- SVG sprite for usage in HTML
+├── sprite.js      <-- SVG sprite for usage in javascript
+├── icon-list.js   <-- manifest of all available icons
+├── profile.svg    <-- optimized svg
+├── github.svg     <-- optimized svg
+└── facebook.svg   <-- optimized svg
 ```
 
 ## How to reference sprite icons
