@@ -28,7 +28,6 @@ async function makeIcons() {
 	// Add icon list to src
 	const listPath = path.join(__dirname, 'src/icons/icon-list.json')
 	fs.writeFileSync(listPath, JSON.stringify(iconData.iconMap, null, 2))
-
 }
 
 makeIcons()
