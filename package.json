@@ -36,7 +36,7 @@
     "htmlparser2": "^3.9.1",
     "lodash.filter": "^4.6.0",
     "pretty-bytes": "^5.1.0",
-    "pug": "^3.0.0",
+    "pug": "^3.0.2",
     "rimraf": "^2.6.3",
     "svgo": "^1.3.2"
   }
