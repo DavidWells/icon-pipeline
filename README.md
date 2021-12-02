@@ -127,3 +127,4 @@ After your sprite is in the DOM, you can reference icons with the `use` tag and 
 ## Alt packages
 
 - https://github.com/svg-sprite/svg-sprite
+- https://github.com/kreuzerk/svg-to-ts
