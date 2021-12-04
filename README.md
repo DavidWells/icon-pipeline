@@ -128,3 +128,4 @@ After your sprite is in the DOM, you can reference icons with the `use` tag and 
 
 - https://github.com/svg-sprite/svg-sprite
 - https://github.com/kreuzerk/svg-to-ts
+- https://github.com/natemoo-re/astro-icon
