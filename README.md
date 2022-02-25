@@ -124,6 +124,10 @@ After your sprite is in the DOM, you can reference icons with the `use` tag and 
 
 - [How to work with SVG icons](https://fvsch.com/svg-icons/)
 
+## SVG tools
+
+- Image to SVG https://github.com/Schniz/svgify
+
 ## Alt packages
 
 - https://github.com/svg-sprite/svg-sprite
