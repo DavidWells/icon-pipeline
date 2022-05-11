@@ -123,6 +123,7 @@ After your sprite is in the DOM, you can reference icons with the `use` tag and 
 ## Recommended SVG resources
 
 - [How to work with SVG icons](https://fvsch.com/svg-icons/)
+- [Ways to manage icons in React](https://benadam.me/thoughts/react-svg-sprites/)
 
 ## SVG tools
 
