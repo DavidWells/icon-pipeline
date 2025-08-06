@@ -18,7 +18,9 @@ async function makeIcons() {
 			/* Turn off additional svg classes added for advanced styling */
 			// disableClasses: true,
 			/* Namespace of icon IDs. Will prefix icon names. Example 'foo.svg' will become 'company-foo' */
-			// namespace: 'company'
+			// namespace: 'company',
+			/* Use ESM syntax */
+			isESM: true
 		})
 	} catch (error) {
 		console.log('error', error)
