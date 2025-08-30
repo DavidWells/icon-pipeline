@@ -1,4 +1,4 @@
-# Icon Pipeline
+# 🔧 Icon Pipeline
 
 > The no nonsense icon pipeline
 
