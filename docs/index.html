@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Icon Pipeline - The no nonsense icon pipeline for optimizing SVG icons and creating SVG sprites">
+    <title>Icon Pipeline Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: white;
+            min-height: 100vh;
+        }
+
+        header {
+            border-bottom: 3px solid #0366d6;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #0366d6;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0366d6;
+            border-bottom: 2px solid #e1e4e8;
+            padding-bottom: 0.3rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #0366d6;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        pre {
+            background-color: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 1rem;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+        }
+
+        code {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.9em;
+            background-color: #f6f8fa;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .file-tree {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            line-height: 1.8;
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e1e4e8;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔧 Icon Pipeline</h1>
+            <p class="subtitle">The no nonsense icon pipeline</p>
+        </header>
+
+        <main>
+            <p>Optimizes svg icons and creates SVG sprites for <code>&lt;use&gt;</code> tags.</p>
+            <p>Automatically optimize SVGs and build icon sprite for use in HTML or in JS.</p>
+
+            <h2>Install</h2>
+            <pre><code>npm install icon-pipeline</code></pre>
+
+            <h2>Usage</h2>
+            <p>Include <code>icon-pipeline</code> as a dev dependency and call it during your build process.</p>
+            <p>Here is an example:</p>
+            <pre><code>const path = require('path')
+const iconPipeline = require('icon-pipeline')
+
+const iconSrcFolder = path.join(__dirname, 'src', 'icons')
+const iconOutputFolder = path.join(__dirname, 'build', 'icons')
+
+/* Generate optimized SVGs and icon sprite */
+iconPipeline({
+  // Location of non optimized svg icons
+  srcDir: iconSrcFolder,
+  // Output directory for optimized svg icons & svg sprite
+  outputDir: iconOutputFolder,
+  // Includes the sprite.js && sprite.svg in original icon directory
+  includeSpriteInSrc: true,
+  // Turn off additional svg classes added for advanced styling
+  /* disableClasses: true, */
+  // Namespace of icon IDs. Will prefix icon names. Example 'foo.svg' will become 'company-foo'
+  /* namespace: 'company' */
+}).then((iconData) => {
+  console.log('iconData', iconData)
+})
+
+console.log(iconData)</code></pre>
+
+            <p>See <a href="../example">make-icons.js file</a> for a working example of this.</p>
+
+            <h3>Input</h3>
+            <p>So for example, the src directory (<strong>srcDir</strong>) of unoptimized SVG icons looks like:</p>
+            <pre class="file-tree"><code>src/icons/
+├── profile.svg
+├── github.svg
+└── facebook.svg</code></pre>
+
+            <h3>Output</h3>
+            <p>The output directory (<strong>outputDir</strong>) of icons will result in:</p>
+            <pre class="file-tree"><code>build/icons/
+├── sprite.svg     &lt;-- SVG sprite for usage in HTML
+├── sprite.js      &lt;-- SVG sprite for usage in javascript
+├── icon-list.js   &lt;-- manifest of all available icons
+├── profile.svg    &lt;-- optimized svg
+├── github.svg     &lt;-- optimized svg
+└── facebook.svg   &lt;-- optimized svg</code></pre>
+
+            <h2>How to reference sprite icons</h2>
+            <p>There are a couple different ways you can reference your newly created icon sprite.</p>
+
+            <h3>Vanilla HTML</h3>
+            <p>Include your <code>sprite.svg</code> into your DOM.</p>
+            <pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;&lt;/head&gt;
+  &lt;body&gt;
+    &lt;div&gt;Your app&lt;/div&gt;
+    &lt;!-- Include the sprite --&gt;
+    &lt;svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position:absolute; width: 0; height: 0"&gt;
+      &lt;symbol viewBox="0 0 24 24" id="facebook"&gt;
+        &lt;path d="M18.768 7.465Hl.417-4z..."&gt;&lt;/path&gt;
+      &lt;/symbol&gt;
+      &lt;symbol viewBox="0 0 24 24" id="github"&gt;
+        &lt;path d="M12 0C5.374 0 0 5.373..."&gt;&lt;/path&gt;
+      &lt;/symbol&gt;
+    &lt;/svg&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+            <h3>Javascript</h3>
+            <p>Or include the <code>sprite.js</code> into your JS app and inject into the DOM.</p>
+            <pre><code>import sprite from './icons/sprite'
+import addSVGtoDOM from './components/Icon/addSVGtoDOM'
+addSVGtoDOM(null, sprite)</code></pre>
+
+            <p>See the <a href="../example">example</a> for how to use with React components.</p>
+
+            <h3><code>use</code> tag</h3>
+            <p>After your sprite is in the DOM, you can reference icons with the <code>use</code> tag and the ID of the icon. <code>#facebook</code> here is the name of the icon file.</p>
+            <pre><code>&lt;svg&gt;
+  &lt;use xlink:href="#facebook"&gt;&lt;/use&gt;
+&lt;/svg&gt;</code></pre>
+
+            <h2>Recommended SVG resources</h2>
+            <ul>
+                <li><a href="https://fvsch.com/svg-icons/" target="_blank">How to work with SVG icons</a></li>
+                <li><a href="https://benadam.me/thoughts/react-svg-sprites/" target="_blank">Ways to manage icons in React</a></li>
+            </ul>
+
+            <h2>SVG tools</h2>
+            <ul>
+                <li>Image to SVG - <a href="https://github.com/Schniz/svgify" target="_blank">https://github.com/Schniz/svgify</a></li>
+                <li>SVG to font - <a href="https://github.com/jaywcjlove/svgtofont" target="_blank">https://github.com/jaywcjlove/svgtofont</a></li>
+            </ul>
+
+            <h2>Alt packages</h2>
+            <ul>
+                <li><a href="https://github.com/svg-sprite/svg-sprite" target="_blank">https://github.com/svg-sprite/svg-sprite</a></li>
+                <li><a href="https://github.com/kreuzerk/svg-to-ts" target="_blank">https://github.com/kreuzerk/svg-to-ts</a></li>
+                <li><a href="https://github.com/natemoo-re/astro-icon" target="_blank">https://github.com/natemoo-re/astro-icon</a></li>
+            </ul>
+        </main>
+
+        <footer>
+            <p>Icon Pipeline - Documentation generated from README.md</p>
+        </footer>
+    </div>
+</body>
+</html>
